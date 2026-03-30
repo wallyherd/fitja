@@ -1,4 +1,3 @@
-import type { NextConfig } from "next";
 import withPWAInit from "@ducanh2912/next-pwa";
 
 const withPWA = withPWAInit({
@@ -8,9 +7,9 @@ const withPWA = withPWAInit({
   skipWaiting: true,
 });
 
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   // Necessário para o plugin PWA funcionar no Next.js 16 (que usa Turbopack por padrão)
-  // Nota: Deixamos o turbopack vazio para usar as configurações padrão da Vercel
   webpack: (config) => {
     return config;
   },
