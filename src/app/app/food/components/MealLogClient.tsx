@@ -148,9 +148,14 @@ export function MealLogClient({ meals, isPremium = false }: Props) {
                 name: m.name,
                 category: 'IA',
                 unit: 'g',
-                per100: { calories: m.calories, protein: m.protein || 0, carbs: m.carbs || 0, fat: m.fat || 0 }
+                per100: { 
+                  calories: m.grams ? Math.round((m.calories * 100) / m.grams) : m.calories, 
+                  protein: m.grams ? Math.round(((m.protein || 0) * 100) / m.grams) : (m.protein || 0), 
+                  carbs: m.grams ? Math.round(((m.carbs || 0) * 100) / m.grams) : (m.carbs || 0), 
+                  fat: m.grams ? Math.round(((m.fat || 0) * 100) / m.grams) : (m.fat || 0) 
+                }
               },
-              grams: 100
+              grams: m.grams || 100
             }
           }))
           setFoodEntries(newEntries)

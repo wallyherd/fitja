@@ -21,9 +21,9 @@ export async function POST(req: NextRequest) {
     const { image } = await req.json(); // Base64 image
     if (!image) return NextResponse.json({ error: "Image data required" }, { status: 400 });
 
-    const prompt = `Analise a foto desta refeição e extraia os alimentos. 
-    Retorne APENAS um JSON no formato: {"meals": [{"name": "Nome do alimento", "calories": number, "protein": number, "carbs": number, "fat": number}]}. 
-    Seja específico e estime calorias e macros baseados em porções visuais reais do prato.`;
+    const prompt = `Analise a foto desta refeição e extraia os alimentos contidos. 
+    Retorne APENAS um JSON no formato EXATO: {"meals": [{"name": "Nome do alimento", "grams": number, "calories": number, "protein": number, "carbs": number, "fat": number}]}. 
+    Seja específico: estime a quantidade real em gramas ("grams") e CALCULE calorias, proteína, carboidratos e gorduras do peso total de cada alimento no prato.`;
 
     const result = await model.generateContent([
       prompt,
