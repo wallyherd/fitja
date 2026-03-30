@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
-const withPWA = require("@ducanh2912/next-pwa").default({
+import withPWAInit from "@ducanh2912/next-pwa";
+
+const withPWA = withPWAInit({
   dest: "public",
   disable: process.env.NODE_ENV === "development",
   register: true,
@@ -7,8 +9,8 @@ const withPWA = require("@ducanh2912/next-pwa").default({
 });
 
 const nextConfig: NextConfig = {
-  // Necessrio para o plugin PWA funcionar no Next.js 16 (que usa Turbopack por padro)
-  turbopack: {},
+  // Necessário para o plugin PWA funcionar no Next.js 16 (que usa Turbopack por padrão)
+  // Nota: Deixamos o turbopack vazio para usar as configurações padrão da Vercel
   webpack: (config) => {
     return config;
   },
@@ -24,4 +26,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-module.exports = withPWA(nextConfig);
+export default withPWA(nextConfig);
