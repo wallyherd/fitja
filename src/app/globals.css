@@ -1,0 +1,354 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────
+   FITJÁ DESIGN SYSTEM v2.0 — PREMIUM REBUILD
+   Philosophy: White-led, teal-green soul,
+   clinical precision, native mobile feel.
+───────────────────────────────────────────── */
+
+@theme {
+  /* ── BRAND PALETTE: Teal-Green Premium ─────── */
+  --color-brand-50:  #f0fdfb;
+  --color-brand-100: #ccfbf5;
+  --color-brand-200: #99f6eb;
+  --color-brand-300: #5eead4;
+  --color-brand-400: #2dd4bf;
+  --color-brand-500: #14b8a6;
+  --color-brand-600: #0d9488;
+  --color-brand-700: #0f766e;
+  --color-brand-800: #115e59;
+  --color-brand-900: #134e4a;
+
+  /* ── ACCENT: Clear Blue (trust, data) ──────── */
+  --color-accent-50:  #eff8ff;
+  --color-accent-100: #dbeffe;
+  --color-accent-200: #bae8fd;
+  --color-accent-300: #7dd8fb;
+  --color-accent-400: #38c1f5;
+  --color-accent-500: #0ea5e9;
+  --color-accent-600: #0285c7;
+  --color-accent-700: #0369a1;
+
+  /* ── VITALITY GREEN: Success + Activity ────── */
+  --color-vitality-400: #4ade80;
+  --color-vitality-500: #22c55e;
+  --color-vitality-600: #16a34a;
+
+  /* ── SURFACE SYSTEM: White-led ──────────────── */
+  --color-surface:         #ffffff;
+  --color-surface-dim:     #f8fafb;
+  --color-surface-sunken:  #f1f5f9;
+  --color-surface-raised:  #ffffff;
+  --color-surface-overlay: rgba(255,255,255,0.96);
+
+  /* ── BORDER SYSTEM ──────────────────────────── */
+  --color-border-subtle: rgba(0,0,0,0.05);
+  --color-border-light:  rgba(0,0,0,0.08);
+  --color-border-medium: rgba(0,0,0,0.12);
+  --color-border-brand:  rgba(20,184,166,0.25);
+
+  /* ── TEXT SYSTEM ────────────────────────────── */
+  --color-text-display: #0a0f1e;
+  --color-text-title:   #111827;
+  --color-text-body:    #374151;
+  --color-text-muted:   #6b7280;
+  --color-text-faint:   #9ca3af;
+  --color-text-brand:   #0d9488;
+  --color-text-accent:  #0369a1;
+
+  /* ── SEMANTIC COLORS ────────────────────────── */
+  --color-error-bg:     #fff1f2;
+  --color-error-border: rgba(244,63,94,0.2);
+  --color-error-solid:  #f43f5e;
+  --color-error-text:   #be123c;
+
+  --color-warning-bg:    #fffbeb;
+  --color-warning-solid: #f59e0b;
+  --color-warning-text:  #92400e;
+
+  --color-streak-fire:  #f97316;
+  --color-streak-gold:  #f59e0b;
+
+  /* ── TYPOGRAPHY ──────────────────────────────── */
+  --font-sans: var(--font-outfit), 'Outfit', system-ui, sans-serif;
+  --font-body: var(--font-jakarta), 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  /* ── GEOMETRY ─────────────────────────────────  */
+  --radius-sm:   0.5rem;    /* 8px */
+  --radius-md:   0.875rem;  /* 14px */
+  --radius-lg:   1.25rem;   /* 20px */
+  --radius-xl:   1.75rem;   /* 28px */
+  --radius-2xl:  2.25rem;   /* 36px */
+  --radius-3xl:  2.75rem;   /* 44px */
+  --radius-pill: 9999px;
+
+  /* ── SHADOW SYSTEM — Multi-layer premium ───── */
+  /* Level 0: Borders only — flat cards */
+  --shadow-none: none;
+  
+  /* Level 1: Floating card */
+  --shadow-xs:
+    0 1px 2px rgba(0,0,0,0.04),
+    0 2px 8px -1px rgba(0,0,0,0.04);
+  
+  /* Level 2: Elevated surface */
+  --shadow-sm:
+    0 2px 4px rgba(0,0,0,0.03),
+    0 8px 24px -4px rgba(0,0,0,0.06);
+  
+  /* Level 3: Hover / interactive */
+  --shadow-md:
+    0 4px 8px rgba(0,0,0,0.04),
+    0 16px 40px -6px rgba(0,0,0,0.10);
+  
+  /* Level 4: Modals / dropdowns */
+  --shadow-lg:
+    0 8px 16px rgba(0,0,0,0.04),
+    0 24px 60px -8px rgba(0,0,0,0.14);
+  
+  /* Brand glow shadows */
+  --shadow-brand-sm:
+    0 4px 14px -2px rgba(20,184,166,0.25),
+    0 2px 4px rgba(20,184,166,0.10);
+  --shadow-brand:
+    0 8px 28px -4px rgba(20,184,166,0.32),
+    0 4px 8px rgba(20,184,166,0.12);
+  --shadow-brand-lg:
+    0 16px 48px -8px rgba(20,184,166,0.40),
+    0 6px 16px rgba(20,184,166,0.16);
+
+  /* Accent/blue glow */
+  --shadow-accent:
+    0 8px 28px -4px rgba(14,165,233,0.28),
+    0 4px 8px rgba(14,165,233,0.10);
+
+  /* Streak/fire glow */
+  --shadow-fire:
+    0 8px 24px -4px rgba(249,115,22,0.35),
+    0 2px 8px rgba(249,115,22,0.15);
+}
+
+/* ─── BASE RESET ─────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-surface-dim);
+    color: var(--color-text-body);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.011em;
+    line-height: 1.6;
+    overscroll-behavior: none;
+  }
+
+  /* Safe area support for notched phones */
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0); }
+  .pt-safe { padding-top: env(safe-area-inset-top, 0); }
+}
+
+/* ─── UTILITY LAYER ─────────────────────────── */
+@layer utilities {
+
+  /* ── GLASS SURFACES ──────────────────────── */
+  .glass {
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.55);
+  }
+
+  .glass-strong {
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(36px) saturate(200%);
+    -webkit-backdrop-filter: blur(36px) saturate(200%);
+    border: 1px solid rgba(255,255,255,0.70);
+  }
+
+  /* ── SURFACE CARD ────────────────────────── */
+  .card {
+    background: #ffffff;
+    border: 1px solid var(--color-border-light);
+    box-shadow: var(--shadow-xs);
+  }
+
+  .card-raised {
+    background: #ffffff;
+    border: 1px solid var(--color-border-subtle);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .card-interactive {
+    background: #ffffff;
+    border: 1px solid var(--color-border-light);
+    box-shadow: var(--shadow-xs);
+    transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .card-interactive:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+    border-color: var(--color-border-medium);
+  }
+
+  /* ── BRAND GRADIENT SURFACES ─────────────── */
+  .surface-brand-soft {
+    background: linear-gradient(145deg, #f0fdfb 0%, #ccfbf5 100%);
+    border: 1px solid rgba(20,184,166,0.15);
+  }
+
+  .surface-hero {
+    background: linear-gradient(145deg, 
+      #0d9488 0%, 
+      #14b8a6 35%, 
+      #0ea5e9 100%
+    );
+  }
+
+  .surface-hero-complete {
+    background: linear-gradient(145deg,
+      #16a34a 0%,
+      #22c55e 40%,
+      #14b8a6 100%
+    );
+  }
+
+  /* ── PREMIUM GOLD ────────────────────────── */
+  .surface-premium {
+    background: linear-gradient(145deg, #fefce8 0%, #fef3c7 100%);
+    border: 1px solid rgba(245,158,11,0.2);
+  }
+
+  .surface-premium-bold {
+    background: linear-gradient(145deg, #f59e0b 0%, #d97706 100%);
+  }
+
+  /* ── TEXT GRADIENTS ──────────────────────── */
+  .text-gradient-brand {
+    background: linear-gradient(135deg, #0d9488 0%, #0ea5e9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-premium {
+    background: linear-gradient(135deg, #d97706 0%, #f59e0b 60%, #fbbf24 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── PREMIUM LOCK OVERLAY ────────────────── */
+  .premium-lock-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(255,255,255,0.05) 0%,
+      rgba(255,255,255,0.88) 32%,
+      rgba(255,255,255,0.98) 100%
+    );
+    backdrop-filter: blur(3px);
+  }
+
+  /* ── LOADING SKELETON ────────────────────── */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      #f1f5f9 0%,
+      #e2e8f0 50%,
+      #f1f5f9 100%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  }
+
+  /* ── INTERACTIVE STATES ──────────────────── */
+  .active-press {
+    transition: transform 0.1s ease;
+  }
+
+  .active-press:active {
+    transform: scale(0.97);
+  }
+
+  /* ── RING INDICATORS ─────────────────────── */
+  .ring-brand {
+    box-shadow: 0 0 0 4px rgba(20,184,166,0.12);
+  }
+
+  .ring-accent {
+    box-shadow: 0 0 0 4px rgba(14,165,233,0.12);
+  }
+}
+
+/* ─── ANIMATIONS ────────────────────────────── */
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes pulse-glow-brand {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(20,184,166,0.3); }
+  50% { box-shadow: 0 0 0 8px rgba(20,184,166,0); }
+}
+
+@keyframes pulse-glow-fire {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(249,115,22,0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(249,115,22,0); }
+}
+
+@keyframes spin-smooth {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes slide-up-fade {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ─── GLOBAL UTILITY ANIMATIONS ─────────────── */
+.animate-float { animation: float-gentle 3s ease-in-out infinite; }
+.animate-pulse-brand { animation: pulse-glow-brand 2s ease infinite; }
+.animate-pulse-fire { animation: pulse-glow-fire 2s ease infinite; }
+.animate-slide-up { animation: slide-up-fade 0.35s ease forwards; }
+.animate-scale-in { animation: scale-in 0.3s ease forwards; }
+.animate-spin-smooth { animation: spin-smooth 0.9s linear infinite; }
+
+/* ─── MOTION SAFE OVERRIDE ───────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-pulse-brand,
+  .animate-pulse-fire,
+  .animate-slide-up,
+  .animate-scale-in,
+  .animate-spin-smooth,
+  .skeleton {
+    animation: none !important;
+  }
+}
+
+/* ─── SCROLLBAR STYLING ──────────────────────── */
+::-webkit-scrollbar { width: 0; height: 0; }
+
+/* ─── FOCUS RING ─────────────────────────────── */
+*:focus-visible {
+  outline: 2px solid var(--color-brand-400);
+  outline-offset: 2px;
+}
