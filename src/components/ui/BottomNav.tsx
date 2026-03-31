@@ -3,10 +3,11 @@
 import React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Home, Utensils, Dumbbell, Droplets, User, Sparkles } from 'lucide-react'
+import { Home, Utensils, Dumbbell, Droplets, User, Sparkles, Crown } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 const navItems = [
+  { icon: Crown,     label: 'Elite',   path: '/app/premium', isPremium: true },
   { icon: Home,      label: 'Início',  path: '/app/dashboard' },
   { icon: Utensils,  label: 'Comida',  path: '/app/food' },
   { icon: Droplets,  label: 'Água',    path: '/app/water' },
@@ -36,6 +37,34 @@ export function BottomNav() {
         {navItems.map((item) => {
           const isActive = pathname?.startsWith(item.path)
           const Icon = item.icon
+
+          if (item.isPremium) {
+            return (
+              <Link
+                key={item.path}
+                href={item.path}
+                className="relative flex flex-col items-center gap-1 px-2.5 py-1.5 flex-1 group"
+              >
+                <div
+                  className={`p-2.5 rounded-[14px] transition-all duration-300 ${
+                    isActive
+                      ? 'bg-amber-100 text-amber-600 shadow-sm'
+                      : 'bg-amber-50/40 text-amber-500 group-hover:bg-amber-50'
+                  }`}
+                  style={{
+                    boxShadow: isActive ? '0 0 15px rgba(245, 158, 11, 0.2)' : 'none'
+                  }}
+                >
+                  <Icon className={`w-[19px] h-[19px] ${isActive ? 'animate-pulse' : ''}`} strokeWidth={2.5} />
+                </div>
+                <span
+                  className="text-[9px] font-black tracking-widest uppercase italic transition-colors duration-250 bg-gradient-to-r from-amber-500 to-yellow-600 bg-clip-text text-transparent"
+                >
+                  {item.label}
+                </span>
+              </Link>
+            )
+          }
 
           if (item.isCta) {
             return (
