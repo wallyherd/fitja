@@ -66,17 +66,6 @@ export default function WelcomePage() {
       
       {/* ── Footer ── */}
       <footer className="relative z-10 w-full text-center">
-        <div className="flex items-center justify-center gap-6 mb-6">
-           <div className="flex flex-col items-center">
-              <span className="text-white font-black text-xl leading-none italic">12k+</span>
-              <span className="text-gray-500 font-bold text-[9px] uppercase tracking-widest">Atletas</span>
-           </div>
-           <div className="h-4 w-px bg-white/10" />
-           <div className="flex flex-col items-center">
-              <span className="text-white font-black text-xl leading-none italic">Elite</span>
-              <span className="text-gray-500 font-bold text-[9px] uppercase tracking-widest">Acesso</span>
-           </div>
-        </div>
         <p className="text-gray-600 text-[11px] font-medium tracking-tight">
           © 2025 FitJá Health & Performance Labs.
           <br/> Sua evolução começa hoje.

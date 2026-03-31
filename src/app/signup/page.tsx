@@ -24,13 +24,8 @@ export default async function SignupPage({
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-[#0a0f1e]/40 to-transparent" />
       </div>
 
-      {/* ── Floating Benefits ── */}
-      <header className="relative z-10 pt-16 pb-6 px-6 flex flex-col items-center">
-        <div className="flex items-center gap-2 mb-4 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10 transform -rotate-1 shadow-2xl">
-           <Sparkles className="w-4 h-4 text-emerald-400" />
-           <span className="text-[11px] font-black text-white uppercase tracking-widest">+12k Atletas Ativos</span>
-        </div>
-      </header>
+      {/* ── Space for Layout ── */}
+      <div className="relative z-10 pt-20" />
 
       <main className="relative z-10 flex-1 flex flex-col items-center px-5 pb-16 pt-2">
         <div className="w-full max-w-md">
