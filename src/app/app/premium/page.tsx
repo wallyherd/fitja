@@ -5,6 +5,8 @@ import { Check, Sparkles, Zap, ShieldCheck, ArrowLeft, Star, Crown } from 'lucid
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
+import { useState } from 'react'
+
 const features = [
   { title: 'SophIA Pro Coach', desc: 'Análise diária personalizada e conselhos master via IA.', icon: Sparkles },
   { title: 'Acesso Ilimitado', desc: 'Todos os cronogramas, dietas e desafios exclusivos.', icon: Zap },
@@ -13,6 +15,8 @@ const features = [
 ]
 
 export default function PremiumPage() {
+  const [plan, setPlan] = useState<'monthly' | 'yearly'>('yearly')
+
   return (
     <div className="max-w-md mx-auto min-h-screen pb-20" style={{ background: '#0a0f1e' }}>
       
@@ -68,38 +72,67 @@ export default function PremiumPage() {
         ))}
       </div>
 
-      {/* Pricing Card */}
+      {/* Pricing Section */}
       <div className="px-5 relative z-10">
-        <div className="p-8 rounded-[38px] bg-gradient-to-br from-teal-500 to-emerald-600 text-white shadow-2xl shadow-teal-500/20 relative overflow-hidden">
+        <div className="flex bg-white/5 p-1 rounded-2xl mb-6 border border-white/10">
+           <button 
+             onClick={() => setPlan('monthly')}
+             className={`flex-1 py-3 rounded-xl text-[12px] font-black uppercase tracking-widest transition-all ${plan === 'monthly' ? 'bg-white text-[#0a0f1e] shadow-lg' : 'text-gray-500'}`}
+           >
+             Mensal
+           </button>
+           <button 
+             onClick={() => setPlan('yearly')}
+             className={`flex-1 py-3 rounded-xl text-[12px] font-black uppercase tracking-widest transition-all ${plan === 'yearly' ? 'bg-white text-[#0a0f1e] shadow-lg' : 'text-gray-500'}`}
+           >
+             Anual
+           </button>
+        </div>
+
+        <motion.div 
+          key={plan}
+          initial={{ y: 10, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="p-8 rounded-[38px] bg-gradient-to-br from-teal-500 to-emerald-600 text-white shadow-2xl shadow-teal-500/20 relative overflow-hidden"
+        >
              {/* Decor */}
              <div className="absolute right-0 top-0 w-32 h-32 bg-white/10 rounded-full blur-3xl" />
              
              <div className="flex justify-between items-start mb-8">
                <div>
-                 <p className="text-[11px] font-black uppercase tracking-[0.2em] text-white/70 mb-1">Assinatura Anual</p>
-                 <h2 className="text-[42px] font-sans font-black tracking-tight leading-none">R$ 99,00<span className="text-[16px] opacity-60 font-bold tracking-normal">/ano</span></h2>
-                 <p className="text-[10px] font-bold opacity-60 mt-1 uppercase italic">(Apenas R$ 8,25/mês)</p>
+                 <p className="text-[11px] font-black uppercase tracking-[0.2em] text-white/70 mb-1">
+                   {plan === 'yearly' ? 'Assinatura Anual' : 'Assinatura Mensal'}
+                 </p>
+                 <h2 className="text-[42px] font-sans font-black tracking-tight leading-none">
+                   R$ {plan === 'yearly' ? '99,00' : '19,00'}
+                   <span className="text-[16px] opacity-60 font-bold tracking-normal">
+                     {plan === 'yearly' ? '/ano' : '/mês'}
+                   </span>
+                 </h2>
+                 {plan === 'yearly' && (
+                   <p className="text-[10px] font-bold opacity-60 mt-1 uppercase italic">(Apenas R$ 8,25/mês)</p>
+                 )}
                </div>
-               <div className="bg-white/20 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border border-white/20">
-                 ECONOMIZE +R$ 69/ano
-               </div>
+               
+               {plan === 'yearly' && (
+                 <div className="bg-white/20 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border border-white/20">
+                   POUPE +70%
+                 </div>
+               )}
              </div>
 
              <button className="w-full py-4 rounded-2xl bg-white text-[#0a0f1e] text-[16px] font-black active:scale-[0.98] transition-all shadow-lg mb-4">
-               COMEÇAR AGORA
+               {plan === 'yearly' ? 'ASSINAR AGORA' : 'QUERO ESTE'}
              </button>
              
              <p className="text-[10px] text-center text-white/50 font-bold uppercase tracking-widest">
-               Válido por 12 meses • Cancele quando quiser
+               {plan === 'yearly' ? 'Válido por 12 meses • Cancele quando quiser' : 'Cobrança recorrente • Cancele quando quiser'}
              </p>
-        </div>
+        </motion.div>
         
-        {/* Secondary option */}
-        <div className="mt-4 text-center">
-            <button className="text-gray-500 text-[12px] font-black uppercase tracking-widest active-press">
-                OU PLANO MENSAL POR R$ 14,00
-            </button>
-        </div>
+        <p className="mt-8 text-center text-gray-600 text-[10px] font-bold uppercase tracking-tighter">
+            Pagamentos seguros via Stripe & Google Pay
+        </p>
       </div>
 
     </div>
